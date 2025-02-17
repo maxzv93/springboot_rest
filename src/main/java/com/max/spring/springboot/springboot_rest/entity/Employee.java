@@ -3,6 +3,8 @@ package com.max.spring.springboot.springboot_rest.entity;
 import jakarta.persistence.*;
 
 /**
+ * Сотрудники.
+ *
  * @author ZuevMYu
  * @since 17.07.2024
  */
@@ -79,4 +81,14 @@ public class Employee {
     }
 
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", department='" + department + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }

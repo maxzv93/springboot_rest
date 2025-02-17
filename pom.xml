@@ -50,6 +50,31 @@
 			<scope>test</scope>
 		</dependency>
 
+<!--		&lt;!&ndash; https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>jakarta.persistence</groupId>-->
+<!--			<artifactId>jakarta.persistence-api</artifactId>-->
+<!--			<version>3.2.0</version>-->
+<!--		</dependency>-->
+<!--		&lt;!&ndash; https://mvnrepository.com/artifact/jakarta.jms/jakarta.jms-api &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>jakarta.jms</groupId>-->
+<!--			<artifactId>jakarta.jms-api</artifactId>-->
+<!--			<version>3.1.0</version>-->
+<!--		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-broker -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-broker</artifactId>
+			<version>6.1.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>2.0.16</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
