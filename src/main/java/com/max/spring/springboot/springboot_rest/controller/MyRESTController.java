@@ -1,9 +1,7 @@
 package com.max.spring.springboot.springboot_rest.controller;
 
 import com.max.spring.springboot.springboot_rest.entity.Employee;
-import com.max.spring.springboot.springboot_rest.service.ActiveMqService;
-import com.max.spring.springboot.springboot_rest.service.ActiveMqServiceImpl;
-import com.max.spring.springboot.springboot_rest.service.EmployeeService;
+import com.max.spring.springboot.springboot_rest.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,9 +37,19 @@ public class MyRESTController {
         employeeService.saveEmployee(employee);
         //отправим сообщение в очередь AMQ
         ActiveMqService activeMqService = new ActiveMqServiceImpl();
+        KafkaService kafkaService = new KafkaServiceImpl();
         //отправляем сообщение о регистрации нового сотрудника в ActiveMq
         String message = "Зарегистрирован новый сотрудник " + employee.toString();
-        activeMqService.enqueueAMQMessage(message);
+        try {
+            activeMqService.enqueueAMQMessage(message);
+        }catch (Exception e){
+            //skip
+        }
+        try{
+            kafkaService.enqueueKafkaMessage(message);
+        }catch (Exception e){
+            //skip
+        }
         return employee;
     }
 
