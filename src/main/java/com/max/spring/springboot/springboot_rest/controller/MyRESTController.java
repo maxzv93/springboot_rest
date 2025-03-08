@@ -20,9 +20,18 @@ public class MyRESTController {
     @Autowired
     private EmployeeService employeeService;
 
+    private StreamsService streamsService;
+
     @GetMapping("/employees")
     public List<Employee> shawAllEmployees() {
         List<Employee> allEmployees = employeeService.getAllEmployees();
+        return allEmployees;
+    }
+
+    @GetMapping("/calculateManyStreamsData")
+    public String calculateManyStreamsData() {
+        streamsService = new StreamsServiceImpl();
+        String allEmployees = streamsService.calculateManyStreamsData();
         return allEmployees;
     }
 
@@ -42,12 +51,12 @@ public class MyRESTController {
         String message = "Зарегистрирован новый сотрудник " + employee.toString();
         try {
             activeMqService.enqueueAMQMessage(message);
-        }catch (Exception e){
+        } catch (Exception e) {
             //skip
         }
-        try{
+        try {
             kafkaService.enqueueKafkaMessage(message);
-        }catch (Exception e){
+        } catch (Exception e) {
             //skip
         }
         return employee;
